@@ -9,7 +9,7 @@ from google.genai import types
 
 # Overview:
 # This Flask app connects a Telegram bot to Gemini.
-# Telegram sends user messages to the /telegram/webhook route.
+# Telegram sends user messages to the /telegram_webhook route.
 # The app forwards each message to Gemini, using a chat session for memory.
 # Gemini is configured with Google Search grounding and a system prompt.
 # The app then sends Gemini's reply back to the same Telegram chat.
@@ -46,7 +46,7 @@ SYSTEM_PROMPT = os.getenv(
     gemini_settings.get("system_prompt", "you are helpful assistant"),
 )
 
-WEBHOOK_PATH = os.getenv("WEBHOOK_PATH", webhook_settings.get("path", "/telegram/webhook"))
+WEBHOOK_PATH = os.getenv("WEBHOOK_PATH", webhook_settings.get("path", "/telegram_webhook"))
 if not WEBHOOK_PATH.startswith("/"):
     WEBHOOK_PATH = f"/{WEBHOOK_PATH}"
 
@@ -145,7 +145,7 @@ def webhook_info():
 # Main Telegram webhook route.
 # Telegram sends incoming bot messages here as JSON.
 # The function extracts the user's message, sends it to Gemini, then replies in Telegram.
-@app.post("/telegram/webhook")
+@app.post("/telegram_webhook")
 def telegram_webhook():
     update = request.get_json(silent=True) or {}
     message = update.get("message") or update.get("edited_message") or {}

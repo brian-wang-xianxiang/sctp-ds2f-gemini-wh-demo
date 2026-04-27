@@ -4,4 +4,4 @@ gemini:
 
 webhook:
   base_url: https://sctp-ds2f-gemini-wh-demo.onrender.com
-  path: /telegram/webhook
+  path: /telegram_webhook
