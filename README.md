@@ -1,4 +1,4 @@
-# Basic Introduction to Webhooks
+# Basic Introduction to Telegram Webhooks
 
 A webhook is a way for one application to automatically notify another application when something happens.
 
