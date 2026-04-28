@@ -168,7 +168,7 @@ def telegram_webhook():
         )
         telegram_response.raise_for_status()
     except Exception as exc:
-        app.logger.exception("Telegram webhook failed")
+        app.logger.exception("Telegram webhook failed: " + exc)
         return jsonify({"ok": False, "error": str(exc)}), 500
 
     return jsonify({"ok": True})
